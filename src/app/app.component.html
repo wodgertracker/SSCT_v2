@@ -1,0 +1,25 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" routerLink="/">Orders</a>
+        <a class="nav-item nav-link" routerLink="/">Transaction History</a>
+
+
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center mt-4">
+    <p>
+        <a href="https://jasonwatmore.com/post/2019/06/26/angular-8-basic-http-authentication-tutorial-example" target="_top">Supply Chain Tracker </a>
+    </p>
+    <p>
+    </p>
+</div>
