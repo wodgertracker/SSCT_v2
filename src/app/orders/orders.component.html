@@ -1,0 +1,24 @@
+<div>
+
+    <h1>Orders Table</h1>
+    <hr>
+
+    <table id="users">
+
+        <tr>
+            <th *ngFor ="let column of headers ">
+                {{column}}
+
+
+            </th>
+        </tr>
+
+        <tr *ngFor= "let row of rows">
+            <td *ngFor ="let column of headers ">
+                    {{row[column]}}
+            </td>
+            <td>            <button>Place Order</button>
+            </td>
+        </tr>
+    </table>
+</div>>

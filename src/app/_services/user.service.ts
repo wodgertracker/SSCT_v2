@@ -6,6 +6,7 @@ import { User } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+    register: any;
     constructor(private http: HttpClient) { }
 
     getAll() {

@@ -1,10 +1,19 @@
 ﻿<!-- nav -->
+
+
+
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
     <div class="navbar-nav">
+        
+      
+        <alert>
+
+        
+        </alert>
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        <a class="nav-item nav-link" routerLink="/">Orders</a>
-        <a class="nav-item nav-link" routerLink="/">Transaction History</a>
+        <a class="nav-item nav-link" routerLink="orders">Orders</a>
+        <a class="nav-item nav-link" routerLink="transactionhistory">Transaction History</a>
 
 
     </div>

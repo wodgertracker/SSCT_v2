@@ -1,65 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from '../_services';
-import { MustMatch } from '../_services';
+import { UserService, AuthenticationService, AlertService } from '../_services';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
-    form: FormGroup;
+    registerForm: FormGroup;
     loading = false;
     submitted = false;
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService,
+        private authenticationService: AuthenticationService,
+        private userService: UserService,
         private alertService: AlertService
-    ) { }
+
+    ) {
+        // redirect to home if already logged in
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/']);
+        }
+    }
 
     ngOnInit() {
-        this.form = this.formBuilder.group({
-            title: ['', Validators.required],
+        this.registerForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            confirmPassword: ['', Validators.required],
-            acceptTerms: [false, Validators.requiredTrue]
-        }, {
-            validator: MustMatch('password', 'confirmPassword')
+            username: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+    get f() { return this.registerForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        this.alertService.clear();
-
         // stop here if form is invalid
-        if (this.form.invalid) {
+        if (this.registerForm.invalid) {
             return;
         }
+        this.alertService.clear();
 
         this.loading = true;
-        this.accountService.register(this.form.value)
+        this.userService.register(this.registerForm.value)
             .pipe(first())
-            .subscribe({
-                next: () => {
-                    this.alertService.success('Registration successful, please check your email for verification instructions', { keepAfterRouteChange: true });
-                    this.router.navigate(['../login'], { relativeTo: this.route });
+            .subscribe(
+                data => {
+                    this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/login'], { queryParams: { registered: true }});
                 },
-                error: error => {
+                error => {
                     this.alertService.error(error);
                     this.loading = false;
-                }
-            });
+                });
     }
 }

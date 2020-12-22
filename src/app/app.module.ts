@@ -12,23 +12,33 @@ import { appRoutingModule } from './app.routing';
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';;
-import { InventoryComponent } from './inventory/inventory.component'
-;
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from '../app/register/register.component';
+import { TransactionhistoryComponent } from './transactionhistory/transactionhistory.component';
+import { OrdersComponent } from './orders/orders.component';
+import { AlertComponent } from '../_components/alert.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from '../app/reducers/inventory.reducer';
+
+
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
+        StoreModule.forRoot({
+            tutorial: reducer
+          }),
         appRoutingModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent
-,
-        InventoryComponent ,
-        RegisterComponent   ],
+        LoginComponent,
+        RegisterComponent ,
+        TransactionhistoryComponent ,
+        OrdersComponent,
+        AlertComponent
+   ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
