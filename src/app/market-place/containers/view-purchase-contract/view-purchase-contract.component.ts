@@ -48,9 +48,11 @@ export class ViewPurchaseContractComponent implements OnInit, OnDestroy {
       select(fromStore.getSelectedProductWidget),
       filter(product => !!product),
       tap(product => this.store$.dispatch(PurchaseContractActions.loadPurchaseContract({ address: product.contractAddress }))),
-      // nice moment here  - we switch from one observable to another
-      // https://brianflove.com/2017/11/02/angular-http-client-blob/
-      switchMap(() => this.store$.select(fromStore.getSelectedPurchaseContract)),
+     /* Function that enables angular http client 
+      
+   https://brianflove.com/2017/11/02/angular-http-client-blob/
+    */ 
+    switchMap(() => this.store$.select(fromStore.getSelectedPurchaseContract)),
       filter(contract => !!contract),
     );
 
