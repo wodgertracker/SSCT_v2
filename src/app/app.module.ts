@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 // import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component'; // Angular CLI environment
+// import { RegisterComponent } from './register/register.component'; // Angular CLI environment
 
 @NgModule({
   declarations: [
     AppComponent,
     // LoginComponent,
-    RegisterComponent,
+    // RegisterComponent,
   ],
   imports: [
     BrowserModule,

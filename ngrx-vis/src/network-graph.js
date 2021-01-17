@@ -1,5 +1,8 @@
 /* eslint-disable no-undef */
+/*
+The Following script would create a network graph of all available functions in the ngrx javascript code in the following network
 
+*/
 Vue.component('action-network-graphs', {
   template: `
   <section class="ngrx-vis">

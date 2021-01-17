@@ -10,14 +10,14 @@ export class EthersWeb3ProviderService {
 
   constructor(@Inject(EthereumProviderToken) private ethProvider) {
     /*
-    I didnt want to initialize Web3Provider here, because if MetaMask has not been install
+    I didnt want to initialize Web3Provider here, because if MetaMask has not been installed
      the ethereum provider object  windows.ethereum will be null, and call to instantiate
-    // Web3Provider will throw error. This error wil not be caught because the global error handler is not ready yet
-    // due the fact that this service is { providedIn: 'root' } and is created during initialization of the app
+    Web3Provider will throw error. This error wil not be caught because the global error handler is not ready yet
+    due the fact that this service is { providedIn: 'root' } and is created during initialization of the app
     */
   }
 
-  // The following account will never be exposed dd d
+  // The following account will never be exposed 
   public getSelectedAddress(): Observable<string> {
 
     const web3Provider:ethers.providers.JsonRpcProvider = new ethers.providers.Web3Provider(this.ethProvider);
