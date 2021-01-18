@@ -17,9 +17,10 @@ export class FleaMarketContractService {
     const commission = Math.floor(parseFloat(product.commission) * 100);
     const bytes32Key = utils.formatBytes32String(product.productKey);
     const wei = utils.parseEther(product.etherValue);
-
-    // based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
-    // Call the contract method, getting back the transaction tx
+/*
+     based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
+    Call the contract method, getting back the transaction tx
+  */
     const token =
       this.contractToken.createPurchaseContract(bytes32Key, product.description, product.ipfsHash, commission, {
         value: wei
@@ -43,7 +44,7 @@ export class FleaMarketContractService {
 
   }
 
-  // based on https://stackoverflow.com/questions/52118806/how-to-use-result-of-first-observable-into-next-observables
+  // The following function shows how to use a first observable in the project  
   private widgetObservable = (id: number): Observable<PurchaseWidgetModel> =>
     from(this.contractToken.getContractKeyAtIndex(id)).pipe(
       switchMap(key => from(this.contractToken.getContractByKey(key)).pipe(
@@ -60,8 +61,7 @@ export class FleaMarketContractService {
       ))
     )
 
-  // based on https://www.learnrxjs.io/operators/combination/forkjoin.html
-  // Example 3: Making a variable number of requests
+  // The following function is based on https://www.learnrxjs.io/operators/combination/forkjoin.html
   public getPurchaseContractList(): Observable<PurchaseWidgetModel[]> {
 
     return from(this.contractToken.getContractCount()).pipe(
@@ -100,8 +100,8 @@ export class FleaMarketContractService {
 
     const bytes32Key = utils.formatBytes32String(productKey);
 
-    // based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
-    // Call the contract method, getting back the transaction tx
+    // The following function is based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
+    // The function Calls the contract method, getting back the transaction tx
     const token = this.contractToken.removeContractByKey(bytes32Key);
     return from(token)
       .pipe(

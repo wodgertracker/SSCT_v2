@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { register } from 'ethers/utils/wordlist';
+import { SignUpComponent } from '../app/components/sign-up/sign-up.component';
+import { LoginComponent } from '../app/login/login.component';
+import { ForgotPasswordComponent } from '../app/components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from '../app/components/verify-email/verify-email.component';
+
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { NotFoundPageComponent } from './core/containers/not-found-page.component';
+import { AuthGuard } from '../app/shared/guard/auth.guard';
+
+
 
 import * as guards from './core/guards';
 
@@ -28,4 +37,3 @@ export const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

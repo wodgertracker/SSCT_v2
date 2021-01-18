@@ -49,8 +49,8 @@ export class ViewPurchaseContractComponent implements OnInit, OnDestroy {
       filter(product => !!product),
       tap(product => this.store$.dispatch(PurchaseContractActions.loadPurchaseContract({ address: product.contractAddress }))),
      /* Function that enables angular http client 
-      
-   https://brianflove.com/2017/11/02/angular-http-client-blob/
+        
+          https://brianflove.com/2017/11/02/angular-http-client-blob/
     */ 
     switchMap(() => this.store$.select(fromStore.getSelectedPurchaseContract)),
       filter(contract => !!contract),
@@ -63,8 +63,7 @@ export class ViewPurchaseContractComponent implements OnInit, OnDestroy {
       tap(contract =>
         this.store$.dispatch(IpfsImageActions.downloadImage({ ipfsHash: contract.ipfsHash }))
       ),
-      // nice moment here  - we switch to another observable
-      // https://brianflove.com/2017/11/02/angular-http-client-blob/
+      //Observable Switch as  Described Earlier in the Code 
       switchMap(() => this.store$.select(fromStore.getImageBlob)),
       filter(image => !!image)
     );

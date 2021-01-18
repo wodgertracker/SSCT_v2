@@ -66,8 +66,8 @@
         </mat-list-item>
 
         <mat-list-item *ngIf="showCommission">
-          <h3 class="mat-h3">Commission</h3>
-          <span>{{ contract.commission/10000 | percent: '1.0-2' }}</span>
+          <h3 class="mat-h3">Quantity</h3>
+          <span>{{ contract.commission/100}}</span>
         </mat-list-item>
 
 
@@ -92,19 +92,17 @@
         <input matInput [formControl]="buyerConfirmPrice" required>
         <mat-error *ngIf="buyerConfirmPrice.invalid && buyerConfirmPrice.touched">{{validatorError}}</mat-error>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Buyer Confirm Purchase</mat-hint>
+        <mat-hint>Producer Confirm Purchase</mat-hint>
       </mat-form-field>
 
       <button mat-raised-button color="warn" *ngIf="canBuy" [disabled]="!(buyerConfirmPrice.valid && buyerConfirmPrice.dirty)" (click)="buy.emit(buyerConfirmPrice.value)">
-        Buyer Execute Purchase</button>
+        Producer Execute Purchase</button>
       <button mat-raised-button color="accent" *ngIf="canDelivery" (click)="delivery.emit()">
-        Buyer Confirm Delivery</button> 
+        Supplier Confirm Delivery</button> 
       <button mat-raised-button color="primary" matTooltip="Seller click to receive escrow" matTooltipPosition="above" *ngIf="canReleaseEscrow" (click)="releaseEscrow.emit()">
-        Seller Receive Escrow <mat-icon>local_bar</mat-icon>
+        Supplier Receive Escrow <mat-icon>local_bar</mat-icon>
       </button>
-      <button mat-raised-button color="primary" matTooltip="Owner click to receive commission" matTooltipPosition="above" *ngIf="canReceiveCommission" (click)="receiveCommission.emit()">
-        Owner Receive Commission <mat-icon>monetization_on</mat-icon>
-      </button>
+     
 
     </section>
     <mat-card-footer>
