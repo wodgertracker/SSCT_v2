@@ -3,7 +3,7 @@
 
   <mat-card fxFlex="60">
     <mat-card-subtitle>
-      New Inventory Contract
+      Add Inventory 
     </mat-card-subtitle>
 
     <form [formGroup]="frmGroup" novalidate>
@@ -142,7 +142,7 @@
 
       <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
         <button mat-flat-button color="warn" [disabled]="frmGroup.pristine || frmGroup.invalid" (click)="onCreate()"
-          class='margin-right--10'>Create Contract</button>
+          class='margin-right--10'>Add Product</button>
       </mat-card-actions>
 
       <!--
