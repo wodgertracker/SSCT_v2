@@ -87,6 +87,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/ClientApp",
+            "netlifyToken": "sUncHINkaFP-17J_TbKd1flFXSaHeIpybK6Y-WuBiMg",
+            "siteId": "a7ec98b5-4c42-4ca3-a232-35491b9b5537"
+          }
         }
       }
     }

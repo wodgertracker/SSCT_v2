@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:4200',
   fleaMarketContractAddress: '0x0f80Aad503240d1d0F7F415D33e8230FcaEDb036',
   firebase: {
   apiKey: "AIzaSyDBWuw6UUQYc7UooKibmgNG-D1uk5kIXds",

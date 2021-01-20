@@ -54,7 +54,7 @@ export class NewPurchaseContractComponent implements OnInit, OnDestroy {
   ipfsHash$: Observable<string>;
   uploadStatus$: Observable<FileUploadStatus>;
   private readonly IMAGE_PATTERN: RegExp = /^.+\.(png|jpg|jpeg|gif|png)$/;
-  commissions: string[] = ['2.0', '2.5', '3.0', '3.5', '4.0'];
+  commissions: string[] = ['1.0', '2.0', '3.0', '4.0', '5.0'];
 
   constructor(
     private store$: Store<fromPurchaseContract.AppState>,
