@@ -2,8 +2,12 @@
 Secure Inventory Supplychain Tracker
 
 This project was generated with Angular CLI version 7.2.0.
-#Please Install Metamask in the Google Chrome Extension in order to Connect to the Blockchain.Secondly You Would need to select connect to blockchain button in order to add or view products in the Inventory Web Application.
-Development server
+# Please Install Metamask in the Google Chrome Extension in order to Connect to the Blockchain.
+
+Secondly You Would need to select connect to blockchain button in order to add or view products in the Inventory Web Application.
+
+
+# Development server
 Run npm start for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 Code scaffolding
