@@ -17,10 +17,7 @@ export class FleaMarketContractService {
     const commission = Math.floor(parseFloat(product.commission) * 100);
     const bytes32Key = utils.formatBytes32String(product.productKey);
     const wei = utils.parseEther(product.etherValue);
-/*
-     based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
-    Call the contract method, getting back the transaction tx
-  */
+
     const token =
       this.contractToken.createPurchaseContract(bytes32Key, product.description, product.ipfsHash, commission, {
         value: wei
@@ -30,13 +27,13 @@ export class FleaMarketContractService {
         switchMap((tx: any) => {
 
           console.log('Transaction', tx);
-          // Wait for transaction to be mined
-          // Returned a Promise which would resolve to the TransactionReceipt once it is mined.
+   
+          // The following function waits for the transaction to be mined and it Returned a Promise which would resolve to the TransactionReceipt once it is mined.
           return from(tx.wait()).pipe(
             tap((txReceipt: any) => console.log('TransactionReceipt: ', txReceipt)),
 
-            // The receipt will have an "events" Array, which will have
-            // the emitted 'event LogCreatePurchaseContract(address sender, address contractAddress)'.
+            
+          // The following function receipt will have an "events" Array, which will havethe emitted 'event LogCreatePurchaseContract(address sender, address contractAddress)'.
             map(txReceipt => txReceipt.events.pop()),
             map(txEvent => txEvent.args.contractAddress),
             tap(address => console.log('address: ', address)));
@@ -100,7 +97,6 @@ export class FleaMarketContractService {
 
     const bytes32Key = utils.formatBytes32String(productKey);
 
-    // The following function is based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
     // The function Calls the contract method, getting back the transaction tx
     const token = this.contractToken.removeContractByKey(bytes32Key);
     return from(token)
@@ -108,18 +104,17 @@ export class FleaMarketContractService {
         switchMap((tx: any) => {
 
           console.log('removeContractByKey Transaction', tx);
-          // Wait for transaction to be mined
-          // Returned a Promise which would resolve to the TransactionReceipt once it is mined.
+           
+          //The following function waits for the transaction to be mined Returned a Promise which would resolve to the TransactionReceipt once it is mined.
           return from(tx.wait()).pipe(
             tap((txReceipt: any) => console.log('TransactionReceipt: ', txReceipt)),
 
-            // The receipt will have an "events" Array, which will have
-            // the emitted event from the Contract. The "LogRemovePurchaseContract(address sender, bytes32 key))
-            // call is the last event.
+        
+            // The function will call  the last event
             map(txReceipt => txReceipt.events.pop()),
             tap(txEvent => console.log('txEvent: ', txEvent)),
             map(txEvent => {
-              // retrieve the key parameter value from the event
+              // The function retrieves the key parameter value from the event
               const key = txEvent.args.key;
               return utils.parseBytes32String(key as ethers.utils.Arrayish);
             }),

@@ -15,7 +15,7 @@ export function sortByKey(a: PurchaseWidgetModel, b: PurchaseWidgetModel): numbe
   return a.productKey.localeCompare(b.productKey);
 }
 
-// based on https://next.ngrx.io/guide/entity/adapter
+// The folowing function is based on https://next.ngrx.io/guide/entity/adapter
 export const adapter: EntityAdapter<PurchaseWidgetModel> = createEntityAdapter<PurchaseWidgetModel>({
   selectId: (product: PurchaseWidgetModel) => product.productKey,
   sortComparer: sortByKey,
@@ -53,10 +53,11 @@ export const reducer = createReducer(
     })
   ),
   /**
-   * The addOne function provided by the created adapter
-   * adds one record to the entity dictionary
+   * The addOne function is done using the Adapter Design Pattern 
+   * The following function adds one record to the entity dictionary
    * and returns a new state including that records if it doesn't
-   * exist already. If the collection is to be sorted, the adapter will
+   * exist already. 
+   * If the collection is to be sorted, the adapter function will
    * insert the new record into the sorted array.
    */
   on(PurchaseContractActions.createPurchaseContractSuccess, (state, { product }) => adapter.addOne(product, state)),

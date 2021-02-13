@@ -9,25 +9,39 @@
         <h3 matSubheader class='margin-top-bottom--12'>
           <a [routerLink]="nav['home'].link" routerLinkActive="active-link"
             [routerLinkActiveOptions]="{ exact: nav['home'].exact }">
-            <img src="{{nav['home'].img_src}}">{{nav['home'].name}}
+            <img src="{{nav['home'].img_src}}" alt="Home">{{nav['home'].name}}
           </a>
         </h3>
         <mat-divider></mat-divider>
 
         <h3 matSubheader class='margin-top-bottom--12'>
-          <img src="{{nav['marketplace'].img_src}}">{{nav['marketplace'].name}}
+          <img src="{{nav['marketplace'].img_src}}"alt="marketplace">{{nav['marketplace'].name}}
         </h3>
         <mat-list-item>
           <a [routerLink]="nav['marketplace_all_products'].link" routerLinkActive="active-link"
             [routerLinkActiveOptions]="{ exact: nav['marketplace_all_products'].exact }">
-            <img src="{{nav['marketplace_all_products'].img_src}}">{{nav['marketplace_all_products'].name}}
+            <img src="{{nav['marketplace_all_products'].img_src}}"alt="all products">{{nav['marketplace_all_products'].name}}
           </a>
         </mat-list-item>
        
         <mat-list-item>
           <a [routerLink]="nav['marketplace_new_product'].link" routerLinkActive="active-link"
             [routerLinkActiveOptions]="{ exact: nav['marketplace_new_product'].exact }">
-            <img src="{{nav['marketplace_new_product'].img_src}}">{{nav['marketplace_new_product'].name}}
+            <img src="{{nav['marketplace_new_product'].img_src}}"alt="new products">{{nav['marketplace_new_product'].name}}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item>
+          <a [routerLink]="nav['linechart'].link" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: nav['linechart'].exact }">
+            <img src="{{nav['linechart'].img_src}}" alt="line chart">{{nav['linechart'].name}}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item>
+          <a [routerLink]="nav['logout'].link" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: nav['logout'].exact }">
+            <img src="{{nav['logout'].img_src}}"alt="login">{{nav['logout'].name}}
           </a>
         </mat-list-item>
 
@@ -46,7 +60,7 @@
 
         <span fxFlex>
           <span fxLayout="row" fxLayoutAlign="start center">
-            <img src="./assets/img/ether-32.png">
+            <img src="./assets/img/ether-32.png" alt ="Inventory">
             Inventory Management DApp
           </span>
 
@@ -79,7 +93,7 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
-
+  // The following div looks into the network the application is connected to within the web application
   <mat-toolbar fxLayout="row" fxLayoutAlign="end center">
 
     <div fxFlex="15" *ngIf="network$ | async as network">
@@ -90,10 +104,10 @@
         </mat-chip-list>
       </span>
     </div>
-
+    //The following div looks into the account id the account is connected to within the web application
     <div fxFlex="30">
       <span fxLayout="row" fxLayoutAlign="center center">
-        <img #blocky>
+        <img #blocky alt="row data">
         <mat-chip-list fxFlexOffset="10px" *ngIf="account$ | async as account">
           <mat-chip color="primary" selected>{{account}}</mat-chip>
         </mat-chip-list>
