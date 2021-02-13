@@ -11,20 +11,7 @@
 
 //based on https://github.com/OpenZeppelin/openzeppelin-test-helpers/blob/master/src/setup.js
 //based on https://www.chaijs.com/plugins/chai-bn/
-/*
-Methods:
 
-const actual = new BN('100000000000000000').plus(new BN('1'));
-const expected = '100000000000000001';
-
-actual.should.be.a.bignumber.that.equals(expected);
-expect(actual).to.be.a.bignumber.that.is.at.most(expected);
-(new BN('1000')).should.be.a.bignumber.that.is.lessThan('2000');
-Properties:
-
-(new BN('-100')).should.be.a.bignumber.that.is.negative;
-expect(new BN('1').sub(new BN('1'))).to.be.a.bignumber.that.is.zero;
-*/
 
 
 var chai = require('chai');
@@ -41,7 +28,7 @@ var should = chai.should();
 const { expectRevert, expectEvent } = require('@openzeppelin/test-helpers');
 const { getCurrentTime } = require('./helpers/time');
 
-const FleaMarketFactory = artifacts.require("../contracts/FleaMarketFactory.sol");
+const InventoryFactory = artifacts.require("../contracts/InventoryMarket.sol");
 const SafeRemotePurchase = artifacts.require("../contracts/SafeRemotePurchase.sol");
 
 // custom function to calculate amount of ether spent on the transaction
@@ -55,7 +42,7 @@ async function getGasCoast(txInfo) {
     return gasCost;
 }
 
-contract("FleaMarketFactory", accounts => {
+contract("InventoryFactory", accounts => {
 
     const [deployer, seller, buyer, buddy] = accounts;
     const IPFS_HASH = "QmdXUfpqeGQyvJ6xVouPLR65XtNp63TUHM937zPvg9dFrT";
@@ -80,12 +67,12 @@ In this case, new is the only option as deployed() simply retrieves
 the same already-deployed contract each time.
    */
 
-    describe('deployment of FleaMarketFactory contract', async () => {
+    describe('deployment of Inventory contract', async () => {
 
         let factory;
         before(async () => {
 
-            factory = await FleaMarketFactory.new();
+            factory = await InventoryFactory.new();
         });
 
         beforeEach(async () => {
@@ -125,7 +112,7 @@ the same already-deployed contract each time.
             const time = await getCurrentTime();
             console.log(`current time: ${time}`);
 
-            factory = await FleaMarketFactory.new();
+            factory = await InventoryFactory.new();
 
         });
 
@@ -254,7 +241,7 @@ the same already-deployed contract each time.
             const time = await getCurrentTime();
             console.log(`current time: ${time}`);
 
-            const factory = await FleaMarketFactory.new();
+            const factory = await InventoryFactory.new();
 
             await factory.createPurchaseContract(bytes32Key, 'Tesla Cybertruck', IPFS_HASH, commission, {
                 from: seller,
@@ -566,7 +553,7 @@ the same already-deployed contract each time.
             const time = await getCurrentTime();
             console.log(`current time: ${time}`);
 
-            const factory = await FleaMarketFactory.new();
+            const factory = await InventoryFactory.new();
 
             await factory.createPurchaseContract(bytes32Key, 'Tesla Cybertruck', IPFS_HASH, commission, {
                 from: seller,
