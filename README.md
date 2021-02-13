@@ -1,10 +1,13 @@
 # Wodger(http://wodgetracker.com/)
 Secure Inventory Supplychain Tracker
 
-This project was generated with Angular CLI version 7.2.0.
+This project was created using the Angular CLI version 7.2.0.
 
 1. Please Install Metamask as a  Google Chrome Extension in order to Connect to the Blockchain.
 2. Secondly You Would need to select connect to blockchain button in order to add or view products in the Inventory Web Application.
+3. The Supplier addes inventory in the add inventory page of the web application.
+4. Producer can view the inventory in the list of inventory page and then use it to place orders 
+5. Producer can then place orders based on the inventory list.
 
 
 # Development server
