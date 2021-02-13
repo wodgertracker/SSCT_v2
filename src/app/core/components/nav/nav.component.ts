@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { tap, map, filter } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { create } from 'ethereum-blockies';
 
@@ -46,6 +46,22 @@ export class NavComponent implements OnInit, AfterViewInit {
       img_src: './assets/img/new-contract-24.png',
       exact: true
     },
+    logout:
+    {
+      link: '/login',
+      name: 'Logout',
+      img_src: './assets/img/new-contract-24.png',
+      exact: true
+    },
+    linechart:
+    {
+      link: '/app-line-chart',
+      name: 'Linechart',
+      img_src: './assets/img/new-contract-24.png',
+      exact: true
+    },
+    
+
 
   };
 

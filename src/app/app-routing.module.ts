@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { register } from 'ethers/utils/wordlist';
-import { LoginComponent } from '../app/login/login.component';
+// import { LoginComponent } from '../app/login/login.component';
 
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { NotFoundPageComponent } from './core/containers/not-found-page.component';
@@ -12,8 +12,7 @@ import * as guards from './core/guards';
 
 export const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
+ 
   {
     path: 'dashboard',
     component: DashboardComponent,
