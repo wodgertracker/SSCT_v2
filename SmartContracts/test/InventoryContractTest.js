@@ -49,8 +49,8 @@ contract("InventoryFactory", accounts => {
 
     // display three test accounts
     console.log(`deployer account: ${deployer}`);
-    console.log(`seller account: ${seller}`);
-    console.log(`buyer account: ${buyer}`);
+    console.log(`Supplier account: ${seller}`);
+    console.log(`Producer account: ${buyer}`);
 
     /* 
    based on 
@@ -292,9 +292,9 @@ the same already-deployed contract each time.
 
         })
 
-        it('the buyer should be able to purchase and confirm delivery of product', async () => {
+        it('the Supplier should be able to purchase and confirm delivery of product', async () => {
 
-            // Buyer makes purchase (put 2x of price)
+            // Supplier makes purchase (put 2x of price)
             let txInfo = await product.buyerPurchase({
                 from: buyer,
                 value: wei
@@ -305,17 +305,17 @@ the same already-deployed contract each time.
                 amount: wei   //could be an instance of BN or string
             });
 
-            // validate buyer
+            // validate Supplier of the product 
             expect(await product.buyer()).to.equal(buyer);
 
             // validate state - should be Locked
             expect(await product.state()).to.be.a.bignumber.that.equal(new BN(1));
 
             // validate smart contract ballance
-            // balance has to be 4x price  = (2x from the seller and 2x from the buyer)
+            // balance has to be 4x price  = (2x from the Producer  and 2x from the Suppleor )
             expect(await product.balanceOf()).to.be.a.bignumber.that.equal((new BN(wei)).mul(new BN(2)));
 
-            // Buyer confirm delivery
+            // Supplier confirming delivery of the product 
             const buyerBalanceBefore = new BN(
                 await web3.eth.getBalance(buyer)
             );
@@ -325,7 +325,7 @@ the same already-deployed contract each time.
                 from: buyer
             }).should.be.fulfilled;
 
-            expectEvent(txInfo, 'LogReceivedByBuyer', {
+            expectEvent(txInfo, 'LogReceivedBySupplier', {
                 sender: buyer,
                 amount: price   // could be an instance of BN or string
             });
@@ -334,29 +334,29 @@ the same already-deployed contract each time.
                 await web3.eth.getBalance(buyer)
             );
 
-            // calculate amount money the buyer spend on the transaction
+            // calculate amount money the Supplier spend on the transaction
             const gasCost = await getGasCoast(txInfo);
 
-            // validate that the buyer gets his escrow money back
+            // validate that the Supplier gets his escrow money back
             expect(buyerBalanceAfter).to.be.a.bignumber.that.equal(buyerBalanceBefore.add(price).sub(gasCost));
 
             // validate state - should be ItemReceived
             expect(await product.state()).to.be.a.bignumber.that.equal(new BN(3));
 
             // validate smart contract ballance
-            // balance has to be 3x price  = (1x went back to the buyer)
+            // balance has to be 3x price  = (1x went back to the Supplier)
             expect(await product.balanceOf()).to.be.a.bignumber.that.equal(price.mul(new BN(3)));
 
         })
 
         it('the seller and then the deployer should be able to withdraw their money', async () => {
 
-            // Buyer makes purchase (put 2x of price)
+            // Supplier  makes purchase (put 2x of price)
             await product.buyerPurchase({
                 from: buyer,
                 value: wei
             })
-            // buyer confirm delivery
+            // Supplier confirm delivery
             await product.buyerConfirmReceived({
                 from: buyer
             });
@@ -378,14 +378,14 @@ the same already-deployed contract each time.
                 await web3.eth.getBalance(seller)
             );
 
-            // calculate amount money the seller spent on the transaction
+            // calculate amount money the Producer spent on the transaction
             let gasCost = await getGasCoast(txInfo);
 
             const price = (new BN(wei)).div(new BN(2));
-            // calculate amount money the seller spent on the commission
+            // calculate amount money the Producer spent on the commission
             const commissionCost = (price.mul(commission)).div(new BN(10000));
 
-            // validate the seller ballance after he withdraw escrow and purchased product money from the contract
+            // validate the Producer ballance after he withdraw escrow and purchased product money from the contract
             expect(sellerBalanceAfter).to.be.a.bignumber.that.equal(sellerBalanceBefore.add(price.mul(new BN(3))).sub(gasCost).sub(commissionCost));
 
             // validate state - should be SellerPaid
@@ -399,15 +399,7 @@ the same already-deployed contract each time.
                 await web3.eth.getBalance(deployer)
             );
 
-            // deployer withdraw his commission
-            txInfo = await product.withdrawByOwner({
-                from: deployer
-            }).should.be.fulfilled;
-
-            expectEvent(txInfo, 'LogWithdrawByOwner', {
-                sender: deployer,
-                amount: commissionCost
-            });
+           
 
             const deployerBalanceAfter = new BN(
                 await web3.eth.getBalance(deployer)
@@ -429,12 +421,12 @@ the same already-deployed contract each time.
 
         it('the deployer and then the seller should be able to withdraw their money', async () => {
 
-            // Buyer makes purchase (put 2x of price)
+            // Supplier  makes purchase (put 2x of price)
             await product.buyerPurchase({
                 from: buyer,
                 value: wei
             })
-            // buyer confirm delivery
+            // Supplier confirm delivery
             await product.buyerConfirmReceived({
                 from: buyer
             });
@@ -444,18 +436,9 @@ the same already-deployed contract each time.
                 await web3.eth.getBalance(deployer)
             );
 
-            // deployer withdraw his commission
-            let txInfo = await product.withdrawByOwner({
-                from: deployer
-            }).should.be.fulfilled;
+         
 
-            // calculate the commission
-            const price = (new BN(wei)).div(new BN(2));
-            const commissionCost = (price.mul(commission)).div(new BN(10000));
-            expectEvent(txInfo, 'LogWithdrawByOwner', {
-                sender: deployer,
-                amount: commissionCost
-            });
+         
 
             const deployerBalanceAfter = new BN(
                 await web3.eth.getBalance(deployer)
@@ -469,8 +452,6 @@ the same already-deployed contract each time.
             // validate state - should be OwnerPaid
             expect(await product.state()).to.be.a.bignumber.that.equal(new BN(5));
 
-            // validate smart contract ballance => should be 3x price minus commission paid to the deployer
-            expect(await product.balanceOf()).to.be.a.bignumber.that.equal(price.mul(new BN(3)).sub(commissionCost));
 
             const sellerBalanceBefore = new BN(
                 await web3.eth.getBalance(seller)
@@ -492,10 +473,10 @@ the same already-deployed contract each time.
             // calculate amount money the seller spent on the transaction
             gasCost = await getGasCoast(txInfo);
 
-            // validate the seller ballance after he withdraw escrow and the purchased product money from the contract
+            // validate the Producer  ballance after he withdraw escrow and the purchased product money from the contract
             expect(sellerBalanceAfter).to.be.a.bignumber.that.equal(sellerBalanceBefore.add(price.mul(new BN(3))).sub(gasCost).sub(commissionCost));
 
-            // validate state - should be SellerPaid
+            // validate state - should be Prodcuer paid 
             expect(await product.state()).to.be.a.bignumber.that.equal(new BN(6));
 
             // validate smart contract ballance
@@ -572,22 +553,22 @@ the same already-deployed contract each time.
 
         it('the seller should not be able to cancel a purchase contract in the state other then Created', async () => {
 
-            // Buyer makes purchase (put 2x of price)
+            //Supplier  makes purchase (put 2x of price)
             await product.buyerPurchase({
                 from: buyer,
                 value: wei
             })
 
-            // the seller is trying to Abort contract - should be rejected
+            // the Producer is trying to Abort contract - should be rejected
             await product.abortBySeller({
                 from: seller
             }).should.be.rejected;
 
         })
 
-        it('the buyer is trying to purchase a product with not enough ether', async () => {
+        it('the Supplier is trying to purchase a product with not enough ether', async () => {
 
-            // Buyer makes purchase (must deposit 2x of price)
+            // Supplier  makes purchase (must deposit 2x of price)
             await product.buyerPurchase({
                 from: buyer,
                 value: web3.utils.toWei('1', 'Ether')
@@ -595,14 +576,14 @@ the same already-deployed contract each time.
 
         })
 
-        it('someone else is trying to withdraw money after the buyer confirms the delivery', async () => {
+        it('someone else is trying to withdraw money after the Supplier confirms the delivery', async () => {
 
-            // Buyer makes purchase (put 2x of price)
+            // Supplier makes purchase (put 2x of price)
             await product.buyerPurchase({
                 from: buyer,
                 value: wei
             })
-            // buyer confirm delivery
+            // Supplier confirm delivery
             await product.buyerConfirmReceived({
                 from: buyer
             });
