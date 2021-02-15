@@ -4,7 +4,7 @@ import { EthersWeb3Token } from './ethers-web3-token';
 import { MarketPlaceAnchorModule } from '../../market-place-anchor.module';
 import { environment } from 'src/environments/environment';
 
-const FLEA_MARKET_CONTRACT_ADDRESS = environment.fleaMarketContractAddress;
+const Inventory = environment.fleaMarketContractAddress;
 const abi = [
   'event LogCreatePurchaseContract(address sender, bytes32 key, address contractAddress)',
   'event LogRemovePurchaseContract(address sender, bytes32 key)',
@@ -20,7 +20,7 @@ const abi = [
 @Injectable({ providedIn: MarketPlaceAnchorModule })
 export class FleaMarketContractToken extends Contract {
   constructor(provider: EthersWeb3Token) {
-    super(FLEA_MARKET_CONTRACT_ADDRESS, abi, provider.getSigner());
+    super(Inventory, abi, provider.getSigner());
   }
 
 }

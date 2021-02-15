@@ -25,7 +25,7 @@ var expect = chai.expect;
 var assert = chai.assert;
 var should = chai.should();
 
-const { expectRevert, expectEvent } = require('@openzeppelin/test-helpers');
+const { expectEvent } = require('@openzeppelin/test-helpers');
 const { getCurrentTime } = require('./helpers/time');
 
 const InventoryFactory = artifacts.require("../contracts/InventoryMarket.sol");
