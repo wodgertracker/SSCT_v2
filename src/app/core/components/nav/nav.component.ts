@@ -16,7 +16,7 @@ import { INavInterface } from '../../models';
 export class NavComponent implements OnInit, AfterViewInit {
 
   @ViewChild('blocky') blockyRef: ElementRef;
-
+//The followig nav functions acts has a interface for the nav bar component within the angular web application
   nav: { [index: string]: INavInterface } = {
     home:
     {
@@ -56,7 +56,7 @@ export class NavComponent implements OnInit, AfterViewInit {
     linechart:
     {
       link: '/app-line-chart',
-      name: 'Linechart',
+      name: 'Transanction History',
       img_src: './assets/img/new-contract-24.png',
       exact: true
     },

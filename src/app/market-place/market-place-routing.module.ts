@@ -17,14 +17,6 @@ it’ll take priority over all the others.
 /*
 The path-matching strategy, one of 'prefix' or 'full'. Default is 'prefix'.
 
-By default, the router checks URL elements from the left to see if the URL matches a given path,
-and stops when there is a match. For example, '/team/11/user' matches 'team/:id'.
-
-The path-match strategy 'full' matches against the entire URL.
-It is important to do this when redirecting empty-path routes.
- Otherwise, because an empty path is a prefix of any URL,
- the router would apply the redirect even when navigating to the redirect destination,
-  creating an endless loop.
 */
 
 const routes: Routes = [

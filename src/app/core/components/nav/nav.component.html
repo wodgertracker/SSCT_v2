@@ -93,7 +93,6 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
-  // The following div looks into the network the application is connected to within the web application
   <mat-toolbar fxLayout="row" fxLayoutAlign="end center">
 
     <div fxFlex="15" *ngIf="network$ | async as network">
@@ -104,7 +103,6 @@
         </mat-chip-list>
       </span>
     </div>
-    //The following div looks into the account id the account is connected to within the web application
     <div fxFlex="30">
       <span fxLayout="row" fxLayoutAlign="center center">
         <img #blocky alt="row data">

@@ -13,19 +13,19 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
-
+//The following test should be used to test if the app gets created
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-
-  it(`should have as title 'module-test-app'`, () => {
+//The Tests should be used to for testing the title for Wodger on the title
+  it(`should have as title 'Wodger'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('module-test-app');
+    expect(app.title).toEqual('Wodger');
   });
-
+//Testing wthetht h1 tabe tab 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
