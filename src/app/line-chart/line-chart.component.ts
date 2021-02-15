@@ -5,7 +5,10 @@ import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
 
+import { ChangeDetectionStrategy } from '@angular/core';
+
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-bar-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
