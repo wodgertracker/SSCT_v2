@@ -1,0 +1,18 @@
+version = 1
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  environment = [
+    "nodejs",
+    "jest",
+    "mocha"
+  ]
+  plugins = [
+    "angular",
+    "angularjs"
+  ]
+  style_guide = "google"
+  dialect = "typescript"
