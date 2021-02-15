@@ -7,8 +7,10 @@ import { create } from 'ethereum-blockies';
 
 import * as fromRoot from '../../store/reducers';
 import { INavInterface } from '../../models';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
