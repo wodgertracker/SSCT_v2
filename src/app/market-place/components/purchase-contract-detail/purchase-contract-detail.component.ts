@@ -11,7 +11,10 @@ interface StatusColor {
   color: ThemePalette;
 }
 
+import { ChangeDetectionStrategy } from '@angular/core';
+
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-purchase-contract-detail',
   templateUrl: './purchase-contract-detail.component.html',
   styles: [

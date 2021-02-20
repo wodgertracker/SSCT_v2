@@ -1,11 +1,11 @@
 
-const FleaMarketContract = artifacts.require("FleaMarketFactory");
+const Inventory = artifacts.require("InventoryMarket");
 
 module.exports = async (deployer) => {
 
-  await deployer.deploy(FleaMarketContract);
+  await deployer.deploy(Inventory);
 
-  const contract = await FleaMarketContract.deployed(); 
+  const contract = await Inventory.deployed(); 
   console.log(`Contract has been deployed successfully: ${contract.address}`);
   
 };
