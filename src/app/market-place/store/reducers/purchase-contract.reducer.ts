@@ -30,7 +30,7 @@ export const initialState: State = adapter.getInitialState({
 export const reducer = createReducer(
   initialState,
   /**
-   * based on https://blog.angular-university.io/ngrx-entity/
+   * The following function is based on https://blog.angular-university.io/ngrx-entity/
    * addAll: replaces the whole collection with a new one
    *  If the collection is to be sorted, the adapter will
    * sort each record upon entry into the sorted array.

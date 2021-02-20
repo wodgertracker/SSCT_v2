@@ -12,7 +12,7 @@ import * as guards from './core/guards';
 
 export const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
- 
+
   {
     path: 'dashboard',
     component: DashboardComponent,

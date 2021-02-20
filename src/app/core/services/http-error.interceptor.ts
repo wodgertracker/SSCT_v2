@@ -4,7 +4,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, retry, catchError } from 'rxjs/operators';
-
+//The following function looks for zap vurnabilties of how Cache Control needs to be set and How Pragma HTTP headers are used within the web application
 // Passes HttpErrorResponse to application global error handler */
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {

@@ -1,12 +1,12 @@
 {
   "inputs": [
     {
-      "name": "a",
-      "public": false,
+      "name": "Buyer",
+      "public": true,
       "type": "field"
     },
     {
-      "name": "b",
+      "name": "Seller",
       "public": true,
       "type": "field"
     }
