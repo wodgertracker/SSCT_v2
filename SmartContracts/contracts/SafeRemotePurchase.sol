@@ -47,7 +47,7 @@ contract SafeRemotePurchase is Ownable {
         require(_key != 0x0, "Key cannot be 0x0");
         require(bytes(_description).length > 0, "Description can't be empty");
         require(_rate > 0, "Must specify the commission rate");
-        require(_seller != address(0), "The seller is the zero address");
+        require(_seller != address(0), "The Producer is the zero address");
 
         _commissionRate = _rate;
         seller = _seller;
@@ -66,12 +66,12 @@ contract SafeRemotePurchase is Ownable {
     }
 
     modifier onlyBuyer() {
-        require(msg.sender == buyer, "Only buyer can call this.");
+        require(msg.sender == buyer, "Only Supplier  can call this.");
         _;
     }
 
     modifier onlySeller() {
-        require(msg.sender == seller, "Only seller can call this.");
+        require(msg.sender == seller, "Only Producer can call this.");
         _;
     }
 
@@ -123,8 +123,7 @@ contract SafeRemotePurchase is Ownable {
         return true;
     }
 
-    // Confirm that the buyer received the item from the seller.
-    // The buyer will receive the locked ether in the amount of the price.
+    // Confirm that the Supplier  received the item from the seller.Furthurmore,The supplier will receive the locked ether in the amount of the price.
     function buyerConfirmReceived()
         external
         onlyBuyer
@@ -139,8 +138,7 @@ contract SafeRemotePurchase is Ownable {
     }
 
     // Abort the purchase and reclaim the ether.
-    // Can only be called by the seller before
-    // the contract is locked.
+    // Can only be called by the Producer before the contract is locked.
     function abortBySeller()
         external
         onlySeller
@@ -150,16 +148,13 @@ contract SafeRemotePurchase is Ownable {
         uint256 amount = balanceOf();
         state = State.Canceled;
 
-        // We use transfer here directly. It is
-        // reentrancy-safe, because it is the
-        // last call in this function and we
-        // already changed the state.
+        // We use transfer here directly. It is safe from reentrancy attacks because it is the last call in this function and we already changed the state.
         seller.transfer(amount);
         emit LogCanceledBySeller(msg.sender, amount, key);
 
         return true;
     }
-
+//This function is for the producer to withdraw the item
     function withdrawBySeller()
         external
         onlySeller
@@ -220,7 +215,7 @@ contract SafeRemotePurchase is Ownable {
         }
     }
 
-    // only owner (==deployer) and seller can see it
+    // only Supplier (==deployer) and the  Producer can see it
     function commissionRate()
         external
         view
