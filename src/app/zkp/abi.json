@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "name": "Buyer",
+      "public": true,
+      "type": "field"
+    },
+    {
+      "name": "Seller",
+      "public": true,
+      "type": "field"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "bool"
+    }
+  ]
+}

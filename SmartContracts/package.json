@@ -1,0 +1,32 @@
+{
+  "name": "flea-marketplace-dapp",
+  "version": "1.0.0",
+  "description": "Ethereum DApp for e-book",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "solhint": "./node_modules/.bin/solhint -f table contracts/**/*.sol",
+    "clean:node_modules": "rimraf ./node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexytiger/flea-marketplace-dapp.git"
+  },
+  "author": "Alex Yevseyevich",
+  "license": "ISC",
+  "homepage": "https://github.com/alexytiger/flea-marketplace-dapp#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.34"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.0.0",
+    "@openzeppelin/test-helpers": "^0.5.5",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-bn": "^0.2.0",
+    "solhint": "^2.3.0"
+  }
+}
