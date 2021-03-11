@@ -61,12 +61,7 @@ contract InventoryMarket is Ownable {
         SafeRemotePurchase c = (new SafeRemotePurchase).value(msg.value)(commissionRate, msg.sender, key, description, ipfsImageHash);
 
 
-        /*
-        !!! Important notice.
-        When a new children contract is created the msg.sender value passed to the Ownable
-        is the address of the parent contract.
-        So we need to tell the child contract who is the contract manager
-        */
+       
         c.transferOwnership(owner());
 
 

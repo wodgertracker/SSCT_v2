@@ -34,9 +34,7 @@ export class ProductsLoadedGuard implements CanActivate {
 
         }
       }),
-      // Notice that the filter() returns the observable sequence that contains elements
-      // from the input sequence that satisfy the condition.
-      // so in this case, if the loaded is false, the steam will not continue, but
+      // Notice that the filter() returns the observable sequence that contains elements from the input sequence that satisfy the condition. so in this case, if the loaded is false, the steam will not continue, but
       // when the loaded is true, we grab this bool value. Which means we are waiting for the
       // loaded value has become true and then we continue the stream and take this one value .
       // after that the whole stream will be completed.

@@ -128,7 +128,6 @@ the same already-deployed contract each time.
                 value: wei
             });
 
-            //??? this way is not working -  explore
             //await factory.getContractCount().should.eventually.equal(new BN(1));
             expect(await factory.getContractCount()).to.be.a.bignumber.that.equal(new BN(1));
 
@@ -266,7 +265,7 @@ the same already-deployed contract each time.
             const keyAscii = web3.utils.hexToUtf8(key);
             keyAscii.should.equal('teslaCybertruck-X01');
 
-            // validate seller
+            // validate producer 
             expect(await product.seller()).to.equal(seller);
 
             // validate owner

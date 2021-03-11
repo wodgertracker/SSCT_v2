@@ -17,7 +17,7 @@ import * as fromWeb3Gateway from './web3-gateway.reducer';
 import * as fromIpfsDaemon from './ipfs-daemon.reducer';
 
 
-// nice moment here
+
 // here is our root state, which also includes the route state
 export interface AppState {
   router: fromRouter.RouterReducerState<any>;
