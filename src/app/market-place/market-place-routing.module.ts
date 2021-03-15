@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
 import * as guards from './guards';
+import { fr } from 'ethers/wordlists';
 
 
 /*
@@ -25,6 +26,7 @@ const routes: Routes = [
     redirectTo: 'products',
     pathMatch: 'full',
   },
+ 
 
   {
     path: 'products',
@@ -42,7 +44,10 @@ const routes: Routes = [
           {
             path: '',
             component: fromComponents.ProductDetailHomeComponent
-          },
+          }, 
+         
+           
+          
 
         ]
 
@@ -52,6 +57,7 @@ const routes: Routes = [
         component: fromContainers.NewPurchaseContractComponent,
         pathMatch: 'full',
       },
+     
 
     ]
   }

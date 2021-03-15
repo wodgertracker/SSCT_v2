@@ -9,6 +9,7 @@ import { NotFoundPageComponent } from './core/containers/not-found-page.componen
 
 
 import * as guards from './core/guards';
+import { LinechartComponent } from './market-place/containers';
 
 export const routes: Routes = [
   // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path:'linechart',
+    component:LinechartComponent,
   },
   {
     path: 'market-place',

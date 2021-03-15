@@ -57,8 +57,8 @@ export class NavComponent implements OnInit, AfterViewInit {
     },
     linechart:
     {
-      link: '/app-line-chart',
-      name: 'Transanction History',
+      link: '/linechart',
+      name: 'Transaction History',
       img_src: './assets/img/new-contract-24.png',
       exact: true
     },

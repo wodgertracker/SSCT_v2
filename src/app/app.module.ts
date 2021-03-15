@@ -8,7 +8,6 @@ import { environment } from '../environments/environment';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { RegisterComponent } from './register/register.component';
-import { LinechartComponent} from './linechart/linechart.component';
 // import { RegisterComponent } from './register/register.component'; // Angular CLI environment
 
 @NgModule({
@@ -17,7 +16,6 @@ import { LinechartComponent} from './linechart/linechart.component';
     // LoginComponent,
     // LoginComponent,
     RegisterComponent,
-    LinechartComponent,
   ],
   imports: [
     BrowserModule,

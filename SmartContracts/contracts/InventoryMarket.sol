@@ -2,12 +2,6 @@
 pragma solidity ^0.6.0;
 
 /*
-- Functions can be specified as being external, public, internal or private, where the default is public.
- - For state variables, external is not possible and the default is internal.
-
- -  For public state variables (!! not external), an automatic getter function (see below) is generated.
-
-  - internal:
 Those functions and state variables can only be accessed internally
 (i.e. from within the current contract or contracts deriving from it), without using this.
 */
@@ -39,9 +33,7 @@ contract InventoryMarket is Ownable {
     event LogRemovePurchaseContract(address sender, bytes32 key);
 
 
-    // deploy a new purchase contract
-    // payable for functions: Allows them to receive Ether together with a call.
-    // commissionRate, for example, 350 ==>  (350/100) = 3.5%
+ 
     function createPurchaseContract(bytes32 key, string calldata description, string calldata ipfsImageHash,
         uint256 commissionRate) external payable returns(bool createResult) {
 
