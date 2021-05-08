@@ -30,12 +30,12 @@ const { getCurrentTime } = require('./helpers/time');
 
 const InventoryFactory = artifacts.require("../contracts/InventoryMarket.sol");
 const SafeRemotePurchase = artifacts.require("../contracts/SafeRemotePurchase.sol");
-
-// custom function to calculate amount of ether spent on the transaction
-// here txInfo is the transaction results
-//based on https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#processing-transaction-results
-// and https://ethereum.stackexchange.com/questions/42950/how-to-get-the-transaction-cost-in-a-truffle-unit-test
-async function getGasCoast(txInfo) {
+/*
+custom function to calculate amount of ether spent on the transaction
+ here txInfo is the transaction resultsbased on https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#processing-transaction-results
+ and https://ethereum.stackexchange.com/questions/42950/how-to-get-the-transaction-cost-in-a-truffle-unit-test
+*/
+ async function getGasCoast(txInfo) {
     const tx = await web3.eth.getTransaction(txInfo.tx);
     const gasCost = (new BN(tx.gasPrice)).mul(new BN(txInfo.receipt.gasUsed));
 
@@ -55,12 +55,6 @@ contract("InventoryFactory", accounts => {
     /* 
    based on 
 https://ethereum.stackexchange.com/questions/42094/should-i-use-new-or-deployed-in-truffle-unit-tests
-
-deployed() behaves like a singleton. 
-It will look if there is already an instance of the contract deployed to the blockchain. 
-The information about which contract has which address on which network is stored in the build folder. 
-
-'new()' will always create a new instance.
 
 Some unit tests will require instantiating multiple instances of a smart contract and deploying each of them. 
 In this case, new is the only option as deployed() simply retrieves 
@@ -186,18 +180,7 @@ the same already-deployed contract each time.
 
         })
 
-        it('should not create product with zero commission', async () => {
-
-            const bytes32Key = web3.utils.utf8ToHex('teslaCybertruck-X01');
-            const wei = web3.utils.toWei('1.4', 'Ether');
-            const commission = new BN(0);
-
-            await factory.createPurchaseContract(bytes32Key, 'Tesla Cybertruck', IPFS_HASH, commission, {
-                from: seller,
-                value: wei
-            }).should.be.rejected;
-
-        })
+       
 
 
         it('should not able to create a product with zero purchase price', async () => {
@@ -594,14 +577,7 @@ the same already-deployed contract each time.
 
         })
 
-        it('should reject if someone trying to view commission rate', async () => {
-
-            // only deployer and seller allow
-            await product.commissionRate({
-                from: buddy
-            }).should.be.rejected;
-
-        })
+    
 
         it('should reject if someone send ether to a purchase contract', async () => {
 

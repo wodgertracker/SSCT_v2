@@ -7,7 +7,7 @@ pragma solidity ^0.6.0;
  *
  * This module is used through inheritance. It will make available the modifier
  * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
+ * the owner class.
  */
 contract Ownable {
 

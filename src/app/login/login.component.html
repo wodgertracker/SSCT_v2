@@ -1,8 +1,8 @@
-<div class="col-md-6 offset-md-3 mt-5">
+﻿<div class="col-md-6 offset-md-3 mt-5">
   <div class="card">
       <h4 class="card-header">Login</h4>
       <div class="card-body">
-          <form (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
@@ -21,7 +21,9 @@
                   <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                   Login
               </button>
-              <a routerLink="/register" class="btn btn-link">Register</a>
+              <button [disabled]="loading" class="btn btn-primary"> <a routerLink="/register" class="btn btn-link">Register</a> </button>
+              
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
           </form>
       </div>
   </div>

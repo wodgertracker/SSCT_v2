@@ -9,11 +9,20 @@ import { NotFoundPageComponent } from './core/containers/not-found-page.componen
 
 
 import * as guards from './core/guards';
-import { LinechartComponent } from './market-place/containers';
+import { LinechartComponent, LoginComponent, RegisterComponent } from './market-place/containers';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', component:LoginComponent, 
 
+},
+  {
+    path:'login',
+    component:LoginComponent,
+  },
+ {
+  path:'register',
+  component:RegisterComponent,
+ },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -22,13 +31,14 @@ export const routes: Routes = [
     path:'linechart',
     component:LinechartComponent,
   },
+
   {
     path: 'market-place',
     // here we use the TypeScript Dynamic Imports in Angular 8
     loadChildren: () => import('./market-place/market-place.module').then(mod => mod.MarketPlaceModule),
     canLoad: [guards.MetaMaskConnectGuard, guards.IpfsConnectGuard],
   },
-  { path: '**', component: NotFoundPageComponent }, // !!!has to be the last one
+  { path: '**', component: NotFoundPageComponent }, 
 
 ];
 

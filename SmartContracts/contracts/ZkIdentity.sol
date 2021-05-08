@@ -1,6 +1,6 @@
 pragma solidity 0.5.11;
 
-import "zk-circuits/build/Verifier.sol";
+import "./Verifier.sol";
 import "./SafeRemotePurchase.sol";
 
 contract ZkIdentity is SafeRemotePurchase {
@@ -10,6 +10,7 @@ contract ZkIdentity is SafeRemotePurchase {
 
     constructor() public {
         owner = msg.sender;
+        receiver=msg.data;
     }
 
     function isInGroup(
