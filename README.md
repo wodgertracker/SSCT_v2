@@ -1,4 +1,4 @@
-# Wodger(http://wodgetracker.com/)
+# Wodger(http://wodgetracker.com/)The code was hosted onto the domain using netlify however the localhost4200 is the latest code.The deployment of code had configuration issues with Netlify that prevented the final codebase to deployed
 Secure Inventory Supplychain Tracker
 
 This project was created using the Angular CLI version 7.2.0.
