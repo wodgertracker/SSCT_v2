@@ -9,7 +9,7 @@ contract ZkIdentity is SafeRemotePurchase {
 
 
     constructor() public {
-        owner = msg.sender;
+        owner  = msg.sender;
         receiver=msg.data;
     }
 

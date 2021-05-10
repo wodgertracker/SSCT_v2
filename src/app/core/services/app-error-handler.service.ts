@@ -2,8 +2,7 @@
 These were some of the resources usec while securing the Angular Web Application against the 7 pernicous kingdoms
 https://github.com/tomastrajan/angular-ngrx-material-starter
 https://medium.com/@aleixsuau/error-handling-angular-859d529fa53a
-https://medium.com/angular-in-depth/expecting-the-unexpected-best-practices-for-error-handling-in-angular-21c3662ef9e4
-https://www.tektutorialshub.com/angular/error-handling-in-angular-applications/
+
 */
 
 

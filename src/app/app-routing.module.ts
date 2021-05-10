@@ -12,7 +12,7 @@ import * as guards from './core/guards';
 import { LinechartComponent, LoginComponent, RegisterComponent } from './market-place/containers';
 
 export const routes: Routes = [
-  { path: '', component:LoginComponent, 
+  { path: '', component:RegisterComponent, 
 
 },
   {

@@ -33,7 +33,7 @@ contract SafeRemotePurchase is Ownable {
     }
     State public state;
 
-    // Contract created by the seller
+    // Contract created by the supplier
     // Ensure that `msg.value` is an even number.
     // Division will truncate if it is an odd number.
     // Check via multiplication that it wasn't an odd number.
