@@ -577,13 +577,7 @@ the same already-deployed contract each time.
 
         })
 
-    
 
-        it('should reject if someone send ether to a purchase contract', async () => {
-
-            await web3.eth.sendTransaction({ from: buddy, to: product.address, value: web3.utils.toWei('0.005', "ether") }).should.be.rejected;
-
-        })
 
         it('should reject if someone try to withdraw ether from a purchase contract', async () => {
 

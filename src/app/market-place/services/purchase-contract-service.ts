@@ -202,7 +202,6 @@ export class PurchaseContractService {
 
     const contract: Contract = new ethers.Contract(contractAddress, this.abi, this.provider.getSigner());
 
-    // based on https://docs.ethers.io/ethers.js/html/cookbook-contracts.html
     // Call the contract method, getting back the transaction tx
     const token = contract.withdrawBySeller();
     return from(token)
