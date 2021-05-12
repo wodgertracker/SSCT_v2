@@ -35,7 +35,7 @@ contract InventoryMarket is Ownable {
 
  
     function createPurchaseContract(bytes32 key, string calldata description, string calldata ipfsImageHash,
-        uint256 commissionRate) external payable returns(bool createResult) {
+        uint256 quantity) external payable returns(bool createResult) {
 
         widgetSet.insert(key); // Note that this will fail automatically if the key already exists.
         WidgetStruct storage wgt = widgets[key];
