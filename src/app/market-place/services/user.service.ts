@@ -6,10 +6,17 @@ import { User } from '../../shared/services/user';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    register: any;
+
     constructor(private http: HttpClient) { }
 
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    }
+    register(user: User) {
+        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    }
+
+    delete(id: number) {
+        return this.http.delete(`${environment.apiUrl}/users/${id}`);
     }
 }
