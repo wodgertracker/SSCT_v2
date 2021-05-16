@@ -16,10 +16,13 @@ contract ZkIdentity is SafeRemotePurchase {
     function isInGroup(
        
     ) public view returns (bool) {
+        //Owner values equate to buyer reverts back the fact that supplier data is present in the smart contract 
     if (owner == buyer ) 
         {
             revert("Supplier data present in Smart Contract");
         }
+        //Receiver values equate to seller  reverts back the fact that supplier data is present in the smart contract 
+
     else if(receiver == seller ) {
              revert("Producer data present in Smart Contract");
 
