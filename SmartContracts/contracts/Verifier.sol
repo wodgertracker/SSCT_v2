@@ -1,7 +1,7 @@
 pragma solidity ^0.8.0;
 
 /*
-Verifer proof utilising ECDA to store the sensitive transactional data on the Elyptic curve 
+Verifer proof utilising ECDA to store the sensitive transactional data on the Elyptic curve
 */
 contract Verifier{
 
@@ -20,7 +20,7 @@ function verifyProof(
         for(uint i = 0; i < input.length; i++){
             inputValues[i] = input[i];
         }
-        //The following function looks for the input values and proof in the verify function and if it equates to 0 it returns true 
+        //The following function looks for the input values and proof in the verify function and if it equates to 0 it returns true
         if (verify(inputValues, proof) == 0) {
             return true;
         } else {
