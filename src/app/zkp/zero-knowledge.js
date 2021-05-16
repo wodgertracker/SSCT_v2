@@ -23,11 +23,11 @@ app.get('/', function(req, res){
   res.sendFile('index.html', { root: __dirname } );
 });
 
-app.get('/register.html', function(req, res){
+app.get('/register', function(req, res){
   res.sendFile('register.html', { root: __dirname } );
 });
 
-app.get('/login.html', function(req, res){
+app.get('/login', function(req, res){
   res.sendFile('login.html', { root: __dirname } );
 });
 
@@ -131,7 +131,7 @@ app.post('/challenge', urlencodedParser, function(req, res){
     }
 });
 
-app.post('/authenticate', urlencodedParser, function(req, res){
+app.post('/register', urlencodedParser, function(req, res){
   if (!req.body) return res.sendStatus(400)
   const creds = req.body.credentials
 
