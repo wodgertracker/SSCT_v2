@@ -21,7 +21,7 @@ contract ZkIdentity is SafeRemotePurchase {
         {
             revert("Supplier data present in Smart Contract");
         }
-        //Receiver values equate to seller  reverts back the fact that supplier data is present in the smart contract
+        //Receiver values equate to seller  reverts back the fact that producer data is present in the smart contract
 
     else if(receiver == seller ) {
              revert("Producer data present in Smart Contract");
